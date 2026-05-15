@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ironman Contracting Corporation (ICC) | Licensed & Bonded Construction</title>
+    <style>
+        /* --- RESET & GLOBAL STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #d32f2f; /* Ironman Red */
+            --secondary-color: #1a1a1a; /* Dark Charcoal */
+            --accent-color: #f57c00; /* Construction Orange */
+            --light-bg: #f4f4f4;
+            --text-dark: #222222;
+            --text-light: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--light-bg);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: background 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            text-transform: uppercase;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 10px auto 0;
+        }
+
+        .badge-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: -1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .badge {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.4rem 1rem;
+            font-size: 0.85rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 50px;
+            letter-spacing: 1px;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+        }
+
+        .logo h1 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-menu {
+            display: flex;
+        }
+
+        .nav-item {
+            margin-left: 2rem;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- HERO SECTION --- */
+        #hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
+                        url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+            padding-top: 60px;
+        }
+
+        .hero-content h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- ABOUT SECTION --- */
+        #about {
+            background-color: var(--text-light);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* --- PORTFOLIO SECTION --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            background: var(--text-light);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+
+        .portfolio-img {
+            height: 240px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .portfolio-info {
+            padding: 1.5rem;
+        }
+
+        .portfolio-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+            font-size: 1.4rem;
+        }
+
+        /* --- CONTACT SECTION --- */
+        #contact {
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+        }
+
+        #contact .section-title {
+            color: var(--text-light);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 4px;
+            background-color: #2a2a2a;
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: 2px solid var(--primary-color);
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .info-link {
+            display: block;
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #111111;
+            color: #888888;
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid #222222;
+        }
+
+        /* --- RESPONSIVE MEDIA QUERIES --- */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .nav-menu {
+                margin-top: 1rem;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .nav-item {
+                margin: 0 0.8rem;
+            }
+
+            .hero-content h2 {
+                font-size: 2.3rem;
+            }
+
+            .about-grid, .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-img {
+                order: -1;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER & NAVIGATION -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <h1><span>IRONMAN</span> CONTRACTING</h1>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#hero" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#portfolio" class="nav-link">Our Services</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="hero">
+        <div class="container hero-content">
+            <h2>Building Trust. Delivering Strength.</h2>
+            <p>Ironman Contracting Corporation (ICC) provides professional, heavy-duty construction and remediation solutions throughout British Columbia and Alberta.</p>
+            <div style="margin-bottom: 2rem;">
+                <span style="border: 2px solid var(--primary-color); padding: 0.5rem 1rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">Licensed & Bonded</span>
+            </div>
+            <a href="#contact" class="btn">Get a Free Estimate</a>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">Who We Are</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <h3>Ironman Contracting Corporation (ICC)</h3>
+                    <p>Based proudly out of Burnaby, BC, ICC is an elite, full-service contracting company built on structural integrity, precision craftsmanship, and unmatched reliability. We confidently extend our operations across all of <strong>British Columbia and Alberta</strong>.</p>
+                    <p>As a fully <strong>licensed and bonded</strong> enterprise, we bring complete accountability and safety to every residential, commercial, and emergency site we manage.</p>
+                    <p>Whether it’s custom finishings or massive structural revamps, our team tackles every project with an "Ironman" work ethic from concept to final cleanup.</p>
+                </div>
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=600&q=80" alt="Ironman Contracting active job site safety">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES & PORTFOLIO SECTION -->
+    <section id="portfolio">
+        <div class="container">
+            <h2 class="section-title">Our Expert Work</h2>
+            <div class="badge-container">
+                <span class="badge">Licensed</span>
+                <span class="badge">Bonded</span>
+                <span class="badge">BC & Alberta Wide</span>
+            </div>
+            
+            <div class="portfolio-grid">
+                
+                <!-- Project 1: Interior Renovation -->
+                <div class="portfolio-item">
+                    <div class="portfolio-img" style="background-image: url('https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="portfolio-info">
+                        <h3>Interior Renovation</h3>
+                        <p>Complete framing, drywalling, basement transformations, modern kitchen overhauls, and layout modifications designed for long-lasting functionality.</p>
+                    </div>
+                </div>
+
+                <!-- Project 2: Sidewalk Paving -->
+                <div class="portfolio-item">
+                    <div class="portfolio-img" style="background-image: url('https://images.unsplash.com/photo-1590060444390-349079fe03a0?auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="portfolio-info">
+                        <h3>Sidewalk Paving & Concrete</h3>
+                        <p>Durable masonry, precise sidewalk paving, custom driveways, and concrete leveling built to withstand severe weather and heavy traffic.</p>
+                    </div>
+                </div>
+
+                <!-- Project 3: Fine Carpentry -->
+                <div class="portfolio-item">
+                    <div class="portfolio-img" style="background-image: url('https://images.unsplash.com/photo-1534224039826-c7a0dea0e66a?auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="portfolio-info">
+                        <h3>Fine Carpentry</h3>
+                        <p>Bespoke finish work, custom molding, structural framing, cabinetry, deck installations, and meticulous wood details crafted by hand.</p>
+                    </div>
+                </div>
+
+                <!-- Project 4: Painting -->
+                <div class="portfolio-item">
+                    <div class="portfolio-img" style="background-image: url('https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="portfolio-info">
+                        <h3>Professional Painting</h3>
+                        <p>Flawless interior and exterior painting services using high-grade, weather-resistant coatings and immaculate crisp edges.</p>
+                    </div>
+                </div>
+
+                <!-- Project 5: Disaster Recovery -->
+                <div class="portfolio-item">
+                    <div class="portfolio-img" style="background-image: url('https://images.unsplash.com/photo-1594913785162-e6785b493bd2?auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="portfolio-info">
+                        <h3>Disaster Recovery & Restoration</h3>
+                        <p>Rapid emergency response for flood, fire, and structural damage restoration. Getting your property safely back to pre-loss condition.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Build Something Together</h2>
+            <div class="contact-grid">
+                
+                <div class="contact-form">
+                    <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Thank you! ICC will get back to you shortly.');">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your Email Address" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="subject" placeholder="Project Type (e.g. Renovation, Disaster Recovery)">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" rows="5" placeholder="Tell us about your project location and details..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Inquiry</button>
+                    </form>
+                </div>
+
+                <div class="contact-info">
+                    <h3>ICC Headquarters</h3>
+                    <p class="info-link"><strong>Base Location:</strong> Burnaby, BC, Canada</p>
+                    <p class="info-link"><strong>Service Coverage:</strong> British Columbia & Alberta</p>
+                    <p class="info-link"><strong>Credentials:</strong> Fully Licensed & Bonded</p>
+                    <p class="info-link"><strong>Emergency Line:</strong> +1 (604) 555-0199</p>
+                    <p class="info-link"><strong>Email:</strong> info@ironmancontracting.com</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Ironman Contracting Corporation (ICC). All Rights Reserved. Licensed & Bonded in BC & Alberta.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
